@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset="UTD-8">
+    <title>Studenten</title>
+</head>
+
+<body>
+    <h1>All students</h1>
+    <br /><br />
+    <ul>
+        <% studenten.forEach(function(studenten) {%>
+        <li>
+            <span><b>naam : </b><%= studenten.naam %></span><br />
+            <span><b>geboortedatum : </b><%= studenten.geboortedatum %></span><br />
+            <span><b>studierichting : </b><%= studenten.studierichting %></span><br />
+        </li>
+        <% }) %>
+    </ul>
+    <br />
+
+    <a href='/student/add'>Add studenten</a>
+</body>
+
+</html>
