@@ -25,4 +25,20 @@ router.get('/add', (req, res) => {
   res.render('add.ejs', {})
 })
 
+router.post('/add', (req,res) => {
+  let student = { naam: req.body.naam, geboortedatum: req.body.geboortedatum, studierichting: req.body.studierichting};
+
+  db.collection('students').findOne(student, (err, result) => {
+    if(result){
+      res.render('bestaatAl.ejs')
+    }
+    else{
+      db.collection('students').insertOne({naam: req.body.naam, geboortedatum: req.body.geboortedatum, studierichting: req.body.studierichting}, (err, result) => {
+        if(err) return
+        res.redirect('/student')
+      })
+    }
+  })
+})
+
 module.exports = router;
